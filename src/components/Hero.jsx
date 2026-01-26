@@ -24,40 +24,55 @@ const Hero = () => {
       <section
         className="relative flex sm:flex-row flex-col w-full h-screen mx-auto 
         sm:bg-hero bg-hero-mobile overflow-hidden">
+        
         <div
-          className={`absolute inset-0 sm:top-[250px] top-[150px] 
-          lg:top-[150px] xl:top-[250px] ${styles.paddingX} 
-          max-w-7xl mx-auto flex flex-row items-start
-          justify-between gap-3`}>
-          <div className="flex flex-col justify-center items-center mt-5 ml-3">
-            <div className="w-5 h-5 rounded-full bg-[#0a0a0a] sm:hidden" />
-            <div className="w-1 sm:h-80 h-40 bw-gradient sm:hidden" />
-          </div>
+  className={`absolute inset-0 sm:top-[250px] top-[150px] 
+  lg:top-[150px] xl:top-[250px] ${styles.paddingX} 
+  max-w-7xl mx-auto flex flex-row items-start
+  justify-between gap-3`}>
 
-          <div>
-            <h1
-              className={`${styles.heroHeadText} text-eerieBlack font-poppins uppercase`}>
-              Hola, soy{' '}
-              <span
-                className="sm:text-battleGray sm:text-[90px] 
-                text-eerieBlack text-[50px] font-mova
-                font-extrabold uppercase">
-                Alejandro
-              </span>
-            </h1>
-            <p className={`${styles.heroSubText} mt-2 text-eerieBlack`}>
-              <h2>Ingeniero de <span>software</span> </h2>
-              <br className="sm:block hidden" />
-              Desarrollo y diseño de soluciones de software perzonalizadas.
-              Especialiasta en aplicaciones web, integraciones API y optimización de procesos.
-            </p>
-          </div>
-          <div
-            className="w-screen flex flex-col items-start 
-            justify-center sm:-ml-[3rem] xxs:mt-4"></div>
+  {/* Decoración lateral (línea y punto) */}
+  <div className="flex flex-col justify-center items-center mt-5 ml-3">
+    <div className="w-5 h-5 rounded-full bg-[#0a0a0a] sm:hidden" />
+    <div className="w-1 sm:h-80 h-40 bw-gradient sm:hidden" />
+  </div>
 
-          <div></div>
-        </div>
+  {/* --- AQUÍ ESTÁ EL CAMBIO IMPORTANTE --- */}
+  {/* Agregamos z-10 para que esté encima de todo y limitamos el ancho */}
+  <div className="relative z-10 flex-1 sm:max-w-[65%] md:max-w-[60%] lg:max-w-[50%]"> 
+    <h1
+      className={`${styles.heroHeadText} text-eerieBlack font-poppins uppercase`}>
+      Hola, soy{' '}
+      <span
+        className="sm:text-battleGray sm:text-[90px] 
+        text-eerieBlack text-[50px] font-mova
+        font-extrabold uppercase">
+        Alejandro
+      </span>
+    </h1>
+
+    {/* Cambié <p> por <div> para evitar el error de renderizado */}
+    <div className={`${styles.heroSubText} mt-4 text-eerieBlack`}>
+      {/* Estilicé mejor el subtítulo */}
+      <h2 className="text-[20px] sm:text-[28px] font-bold uppercase tracking-wider mb-2 text-jet">
+        Ingeniero de <span className="text-battleGray">software</span>
+      </h2>
+      
+      {/* El texto descriptivo ahora tiene su propio párrafo y espacio (leading) */}
+      <p className="leading-relaxed text-[16px] sm:text-[18px] opacity-90">
+        Desarrollo y diseño de soluciones de software personalizadas.
+        <br className="hidden sm:block" />
+        Especialista en aplicaciones web, integraciones API y optimización de procesos.
+      </p>
+    </div>
+  </div>
+  {/* -------------------------------------- */}
+
+  {/* Div vacío para espaciado (puedes dejarlo o quitarlo si usas el max-w de arriba) */}
+  <div className="w-screen flex flex-col items-start justify-center sm:-ml-[3rem] xxs:mt-4"></div>
+
+  <div></div>
+</div>
 
         {/* <div
           className="absolute xs:bottom-10 bottom-32 w-full 
@@ -86,8 +101,8 @@ const Hero = () => {
         <div>
           <img
             className="absolute bottom-0 ml-[50vw] 
-            lg:ml-[75vw] md:ml-[60vw] xmd:ml-[60vw] 2xl:ml-[83vw]
-            sm:h-[90vh] md:h-[70vh] xl:h-[80vh]"
+            lg:ml-[70vw] md:ml-[60vw] xmd:ml-[60vw] 2xl:ml-[83vw]
+            sm:h-[90vh] md:h-[80vh] xl:h-[90vh]"
             src={alex}
             alt="shaquille"
           />

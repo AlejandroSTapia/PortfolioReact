@@ -42,16 +42,22 @@ export default {
         '2xl': '1536px',
         '3xl': '1800px',
       },
-      backgroundImage: {
+  backgroundImage: {
         about:
           'linear-gradient(165deg, rgba(244,244,246,1) 100%, rgba(122,122,122,1) 100%)',
         experience:
           "linear-gradient(135deg, rgba(244,244,246,0.5) 60%, rgba(10,10,10,0.2) 100%),url('/src/assets/backgrounds/white-abstract.png')",
         experienceLight:
           'linear-gradient(137deg, rgba(244,244,246,0.5) 60%, rgba(10,10,10,0.9) 60%)',
-        hero: 'linear-gradient(135deg, rgba(244,244,246,0.8) 60%, rgba(10,10,10,0.95) 60%)',
+          
+        /* --- AQUÍ ESTÁ EL CAMBIO --- */
+        /* Cambié 60% a 75% para empujar el triángulo negro a la derecha */
+        hero: 'linear-gradient(135deg, rgba(244,244,246,0.8) 65%, rgba(10,10,10,0.95) 63%)',
+        
+        /* También ajustamos la versión móvil un poco si quieres */
         'hero-mobile':
-          'linear-gradient(137deg, rgba(244,244,246,0.8) 60%, rgba(10,10,10,1) 60%)',
+          'linear-gradient(137deg, rgba(244,244,246,0.8) 70%, rgba(10,10,10,1) 70%)',
+          
         tech: "linear-gradient(165deg, rgba(20,20,20,0.8) 100%, rgba(109,109,116,0.8) 100%), url('/src/assets/backgrounds/nairobi.png')",
       },
       fontFamily: {
