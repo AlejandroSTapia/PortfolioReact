@@ -10,6 +10,12 @@ import alex from './personal/alex.png';
 
 import backend from './icons/backend.png';
 import ux from './icons/ux.png';
+import IA from './icons/IA.png';
+import agentvoice from './icons/agentvoice.png';
+import automation from './icons/automation.png';
+import backend_apis from './icons/backend_apis.png';
+import crm from './icons/crm.png';
+
 import frontend from './icons/frontend.png';
 import prototyping from './icons/prototyping.png';
 import github from './icons/github.png';
@@ -60,7 +66,12 @@ export {
   alex,
   backend,
   ux,
+  IA,
+  agentvoice,
+  automation,
+  backend_apis,
   frontend,
+  crm,
   prototyping,
   github,
   close,

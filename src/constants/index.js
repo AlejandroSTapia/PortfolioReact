@@ -1,6 +1,10 @@
 import {
+  IA,
+  agentvoice,
+  automation,
+  backend_apis,
   frontend,
-  backend,
+  crm,
   ux,
   prototyping,
   javascript,
@@ -46,21 +50,38 @@ export const navLinks = [
 
 const services = [
   {
-    title: 'Frontend Developer',
+    title: 'Arquitectura de Soluciones IA',
+    icon: IA,
+  },
+  {
+    title: 'Agentes de Voz',
+    icon: agentvoice,
+  },
+  {
+    title: 'Automatización de Procesos',
+    icon: automation,
+  },
+  {
+    title: 'Desarrollo Backend & APIs',
+    icon: backend_apis,
+  },
+  {
+    title: 'Desarrollo Frontend',
     icon: frontend,
   },
   {
-    title: 'Backend Developer',
-    icon: backend,
+    title: 'Integraciones CRM & Webhooks',
+    icon: crm,
   },
   {
-    title: 'UI/UX Design',
+    title: 'Diseño UI/UX',
     icon: ux,
   },
   {
-    title: 'Software Prototyping',
+    title: 'Prototipo de Software',
     icon: prototyping,
   },
+  
 ];
 
 const technologies = [
