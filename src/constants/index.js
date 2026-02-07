@@ -144,6 +144,20 @@ const technologies = [
 ];
 
 const experiences = [
+   {
+    title: 'Founder & AI Solutions Architect',
+    company_name: 'BullRocket Agency',
+    icon: coverhunt,
+    iconBg: '#333333',
+    date: 'Junio 2025 - Actualidad', //30 de junio
+  },
+   {
+    title: 'Ingeniero de Software',
+    company_name: 'Autotodo Méxicana',
+    icon: coverhunt,
+    iconBg: '#333333',
+    date: 'Febrero 2023 - Junio 2025',
+  },
   {
     title: 'Front-End Developer',
     company_name: 'Cover Hunt',
