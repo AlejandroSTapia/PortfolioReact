@@ -56,6 +56,11 @@ import movie from './projects/movie-metro.png';
 import nyeusi from './projects/nyeusi.png';
 import space from './projects/space-hub.png';
 
+import ciosa from './company/ciosa.png';
+import bullrocket from './company/bullrocket.png';
+import coding from './company/coding.png';
+import network from './company/network.png';
+
 export {
   bwmap,
   nairobi,
@@ -107,4 +112,9 @@ export {
   dcc,
   kelhel,
   microverse,
+
+    ciosa,
+    bullrocket,
+    coding,
+    network
 };

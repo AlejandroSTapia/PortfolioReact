@@ -1,3 +1,4 @@
+//import { code } from 'three/examples/jsm/nodes/Nodes.js';
 import {
   IA,
   agentvoice,
@@ -26,11 +27,11 @@ import {
   math,
   movie,
   nyeusi,
-  space,
-  coverhunt,
-  dcc,
-  kelhel,
-  microverse,
+
+  ciosa,
+  bullrocket,
+  coding,
+  network
 } from '../assets';
 
 export const navLinks = [
@@ -145,44 +146,51 @@ const technologies = [
 
 const experiences = [
    {
-    title: 'Founder & AI Solutions Architect',
+    title: 'Fundador & Arquitecto de Soluciones IA',
     company_name: 'BullRocket Agency',
-    icon: coverhunt,
+    icon: bullrocket,
     iconBg: '#333333',
     date: 'Junio 2025 - Actualidad', //30 de junio
   },
    {
-    title: 'Ingeniero de Software',
+    title: 'Ingeniero de Software Senior (.NET & React)',
     company_name: 'Autotodo Méxicana',
-    icon: coverhunt,
+    icon: ciosa,
     iconBg: '#333333',
     date: 'Febrero 2023 - Junio 2025',
   },
-  {
-    title: 'Front-End Developer',
-    company_name: 'Cover Hunt',
-    icon: coverhunt,
+    {
+    title: 'Consultor Full Stack & Móvil',
+    company_name: 'Proyectos Independientes (Freelance)',
+    icon: coding,
     iconBg: '#333333',
-    date: 'Aug 2021 - Feb 2022',
+    date: 'Septiembre 2022 - Febrero 2023',
   },
   {
-    title: 'Mentor (Volunteer)',
-    company_name: 'Microverse',
-    icon: microverse,
+    title: 'Programador Backend Java',
+    company_name: 'TASF',
+    icon: backend_apis,
     iconBg: '#333333',
-    date: 'Mar 2022 - May 2022',
+    date: 'Junio 2022 - Septiembre 2022',
   },
   {
-    title: 'Junior Software Engineer',
-    company_name: 'Kelhel',
-    icon: kelhel,
+    title: 'Desarrollador Full Stack & Consultor',
+    company_name: 'Proyectos Independientes (Freelance)',
+    icon: coding,
     iconBg: '#333333',
-    date: 'May 2022 - Oct 2022',
+    date: 'Diciembre 2022 - Junio 2022',
   },
   {
-    title: 'Full Stack Developer',
-    company_name: 'Diversity Cyber Council',
-    icon: dcc,
+    title: 'Desarrollador Web Frontend',
+    company_name: 'Nearshore Coders',
+    icon: html,
+    iconBg: '#333333',
+    date: 'Febrero 2021 - Oct 2022',
+  },
+  {
+    title: 'Ingeniero de Soluciones TI (Preventa)',
+    company_name: 'Advanced Consulting Group (ACG)',
+    icon: network,
     iconBg: '#333333',
     date: 'Sep 2022 - Present',
   },
