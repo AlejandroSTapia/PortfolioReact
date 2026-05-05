@@ -42,11 +42,23 @@ const ExperienceCard = ({ experience }) => (
       <h3 className="text-jetLight text-[24px] font-bold font-beckman tracking-[2px]">
         {experience.title}
       </h3>
+      {/* Se separó el párrafo de la lista para mantener un HTML válido */}
       <p
         className="text-taupe text-[22px] font-semibold font-overcameBold tracking-[1px]"
         style={{ margin: 0 }}>
         {experience.company_name}
       </p>
+      
+      {/* Sección de points descomentada */}
+      {experience.points && (
+        <ul className="mt-5 list-disc ml-5 space-y-2">
+          {experience.points.map((point, index) => (
+            <li key={index} className="text-taupe text-[16px] font-normal">
+              {point}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   </VerticalTimelineElement>
 );
@@ -102,7 +114,7 @@ const Experience = () => {
               ease-in-out"
               onClick={() =>
                 window.open(
-                  'resume link', //paste the link to your resume here
+                  '/Alejandro Tapia C. V.pdf', 
                   '_blank'
                 )
               }
@@ -116,7 +128,7 @@ const Experience = () => {
                   .querySelector('.download-btn')
                   .setAttribute('src', download);
               }}>
-              MY RESUME
+              Descargar CV
               <img
                 src={download}
                 alt="download"

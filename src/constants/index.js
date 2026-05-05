@@ -146,11 +146,15 @@ const technologies = [
 
 const experiences = [
    {
-    title: 'Fundador & Arquitecto de Soluciones IA',
+    title: 'Arquitecto de Soluciones IA & Integraciones',
     company_name: 'BullRocket Agency',
     icon: bullrocket,
     iconBg: '#333333',
     date: 'Junio 2025 - Actualidad', //30 de junio
+    points: [
+       "Desarrollo de aplicaciones móviles nativas y soluciones web a medida para clientes particulares.",
+       "Implementación de arquitecturas escalables y despliegue en servidores VPS.",
+    ],
   },
    {
     title: 'Ingeniero de Software Senior (.NET & React)',
