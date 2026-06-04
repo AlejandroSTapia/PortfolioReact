@@ -61,6 +61,32 @@ import bullrocket from './company/bullrocket.png';
 import coding from './company/coding.png';
 import network from './company/network.png';
 
+// 1. IMPORTA LAS IMÁGENES AL PRINCIPIO DEL ARCHIVO
+// Asegúrate de que la ruta ('./tech/...') y el nombre de tu archivo ('.png') sean exactamente los que tienes guardados.
+import ghl from './tech/ghl.jpg'; // Cambia 'ghl.jpg' por el nombre real de tu imagen de GHL
+import csharp from './tech/c-sharp.png';
+import python from './tech/python.png';
+import make from './tech/make-color.png';
+import n8n from './tech/n8n-color.png';
+import elevenlabs from './tech/elevenlabs.png';
+import mysql from './tech/mysql.png';
+import gcp from './tech/googlecloud-color.png';
+
+// ... tus otros imports (ciosa, bullrocket, etc.)
+
+export {
+  // 2. AGRÉGALOS AL EXPORT AL FINAL DEL ARCHIVO
+  ghl,
+  csharp,
+  python,
+  make,
+  n8n,
+  elevenlabs,
+  mysql,
+  gcp
+  // ... tus otros exports que ya estaban
+};
+
 export {
   bwmap,
   nairobi,
