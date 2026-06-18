@@ -101,7 +101,7 @@ const ProjectCard = ({
                 className="btn-icon sm:w-[34px] sm:h-[34px] 
                   w-[30px] h-[30px] object-contain"
               />
-              LIVE DEMO
+              VER DEMO
             </button>
           </div>
         </>
@@ -111,24 +111,24 @@ const ProjectCard = ({
 };
 
 const Projects = () => {
-  const [active, setActive] = useState('project-2');
+  // Ajustamos el estado inicial para que abra el primer proyecto de tu lista
+  const [active, setActive] = useState('project-1');
 
   return (
     <div className="-mt-[6rem]">
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>Case Studies</p>
-        <h2 className={`${styles.sectionHeadTextLight}`}>Projects.</h2>
+        <p className={`${styles.sectionSubText} `}>Casos de Éxito</p>
+        <h2 className={`${styles.sectionHeadTextLight}`}>Proyectos.</h2>
       </motion.div>
 
       <div className="w-full flex">
         <motion.p
           variants={fadeIn('', '', 0.1, 1)}
           className="mt-4 text-taupe text-[18px] max-w-3xl leading-[30px]">
-          These projects demonstrate my expertise with practical examples of
-          some of my work, including brief descriptions and links to code
-          repositories and live demos. They showcase my ability to tackle
-          intricate challenges, adapt to various technologies, and efficiently
-          oversee projects.
+          Los siguientes proyectos demuestran mi experiencia a través de soluciones reales y escalables. 
+          Cada caso incluye una breve descripción y enlaces a sus repositorios o demos en vivo. 
+          Reflejan mi capacidad para resolver retos arquitectónicos complejos, integrar múltiples 
+          tecnologías de IA y orquestar ecosistemas de software eficientes.
         </motion.p>
       </div>
 

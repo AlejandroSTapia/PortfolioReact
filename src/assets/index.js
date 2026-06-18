@@ -3,10 +3,11 @@ import nairobi from './backgrounds/nairobi.png';
 import whiteabstract from './backgrounds/white-abstract.png';
 import worldmap from './backgrounds/world-map.png';
 
-import logo from './logo/logo-black.png';
-import logotext from './logo/logo-text-black.png';
+import logo from './logo/axioma-isotipo-color.png';
+import logotext from './logo/logo-sin-isotipo-color.png';
 
 import alex from './personal/alex.png';
+//import alex from './personal/photoBull.jpg';
 
 import backend from './icons/backend.png';
 import ux from './icons/ux.png';

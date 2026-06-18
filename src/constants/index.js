@@ -91,50 +91,59 @@ python,
     },
   ];
 
-  const technologies = [
-      {
-      name: 'ghl',
-      icon: ghl, // TODO: Cambia 'figma' por 'elevenlabs'
-    },
+const technologies = [
+    // --- 1. IA & Automatización (Tu gancho principal) ---
     {
       name: 'ElevenLabs',
-      icon: elevenlabs, // TODO: Cambia 'figma' por 'elevenlabs'
+      icon: elevenlabs,
+    },
+    {
+      name: 'GoHighLevel',
+      icon: ghl, 
     },
     {
       name: 'Make',
-      icon: make, // TODO: Cambia 'rubyrails' por 'make'
+      icon: make,
     },
     {
       name: 'n8n',
-      icon: n8n, // TODO: Cambia 'redux' por 'n8n'
+      icon: n8n,
+    },
+
+    // --- 2. Backend & Arquitectura (Tu motor) ---
+    {
+      name: 'Python',
+      icon: python,
     },
     {
       name: 'C# .NET',
-      icon: csharp, // TODO: Cambia 'postgresql' por 'csharp'
+      icon: csharp,
     },
     {
-      name: 'Python',
-      icon: python, // TODO: Cambia 'graphql' por 'python' cuando descargues su logo
-    },
-        {
-      name: 'TypeScript',
-      icon: typescript,
-    },
-        {
       name: 'Node JS',
       icon: nodejs,
+    },
+
+    // --- 3. Frontend (Tus interfaces) ---
+    {
+      name: 'TypeScript',
+      icon: typescript,
     },
     {
       name: 'React JS',
       icon: reactjs,
     },
-        {
-      name: 'MySQL',
-      icon: mysql, // TODO: Cambia 'html' por 'mysql'
-    },
+
+    // --- 4. Bases de Datos ---
     {
-      name: 'Tailwind CSS',
-      icon: tailwind,
+      name: 'MySQL',
+      icon: mysql, 
+    },
+
+    // --- 5. Cloud, DevOps & Control de Versiones ---
+    {
+      name: 'Google Cloud', // O puedes cambiarlo por Azure si prefieres
+      icon: gcp,
     },
     {
       name: 'Docker',
@@ -146,118 +155,87 @@ python,
     },
   ];
 
-  const experiences = [
+const experiences = [
     {
-      title: 'Arquitecto de Soluciones IA & Integraciones',
-      company_name: 'BullRocket Agency',
+      title: 'Integration Developer & AI Solutions Architect',
+      company_name: 'BullRocket',
       icon: bullrocket,
       iconBg: '#333333',
-      date: 'Junio 2025 - Actualidad',
+      date: 'Enero 2025 - Actualidad',
       points: [
-        "Diseño y desarrollo de Agentes de Voz (ElevenLabs, Twilio) y Chatbots (GoHighLevel), implementando ingeniería de prompts, RAG y Model Context Protocol (MCP).",
-        "Orquestación de flujos de trabajo automatizados utilizando Make y n8n, conectando APIs, Google Cloud Console y bases de datos MySQL.",
-        "Desarrollo Full Stack de sistemas internos tipo ERP y aplicaciones web a medida, gestionando el ciclo completo de vida del software.",
-        "Administración de infraestructura DevOps, gestionando servidores, dominios y despliegues en plataformas como Railway, Render y Supabase.",
+        "Arquitectura RAG & MCP: Diseño de sistemas conectados a MySQL y Google Cloud Console para vincular LLMs con datos estructurados.",
+        "Agentes de Voz e Interfaces: Desarrollo de soluciones automatizadas utilizando Twilio, ElevenLabs y código backend (NodeJS, TS, .NET).",
+        "Ecosistema de Automatización: Orquestación de flujos complejos en n8n y Make, integrando agentes de chat avanzados en GoHighLevel (GHL).",
+        "DevOps e Infraestructura: Gestión integral de servidores, dominios y despliegues en plataformas como Railway, Render y Supabase.",
       ],
     },
     {
-      title: 'Ingeniero de Software Senior (.NET & React)',
-      company_name: 'Autotodo Mexicana (Ciosa)',
+      title: 'Ingeniero de Software en .NET y React',
+      company_name: 'Ciosa Autotodo',
       icon: ciosa,
       iconBg: '#333333',
-      date: 'Febrero 2023 - Junio 2025',
+      date: 'Enero 2023 - Enero 2025',
       points: [
-        "Desarrollo de APIs REST de alto rendimiento con ASP.NET Core e integración con pasarelas de pago (Mercado Pago).",
-        "Modernización de interfaces críticas del ERP utilizando React y Blazor WebAssembly.",
-        "Implementación de la API de Conversiones de Meta en el sitio web de ventas para optimizar el marketing digital.",
-        "Monitoreo de servidores y bases de datos SQL Server, asegurando la disponibilidad crítica del sistema.",
+        "Desarrollo de APIs REST en ASP.NET Core y automatización de pagos en el ERP integrando la API de Mercado Pago.",
+        "Implementación de la API de conversiones de Meta en el sitio web de ventas para optimizar el marketing digital.",
+        "Desarrollo de aplicaciones empresariales multiplataforma utilizando Blazor WebAssembly, React PWA y Xamarin.",
+        "Gestión de repositorios, integración continua y despliegues (CI/CD) utilizando GitHub Actions y Azure Pipelines.",
       ],
     },
     {
-      title: 'Consultor Full Stack & Móvil',
-      company_name: 'Proyectos Independientes (Freelance)',
+      title: 'Desarrollador Full-Stack Freelance',
+      company_name: 'Independiente',
       icon: coding,
       iconBg: '#333333',
-      date: 'Octubre 2022 - Febrero 2023',
+      date: 'Enero 2021 - Diciembre 2023',
       points: [
-        "Diseño y desarrollo de aplicaciones web y móviles a medida para PyMEs, utilizando React, PHP (Laravel) y Android nativo.",
-        "Gestión integral del proyecto: desde la toma de requerimientos hasta el despliegue en servidores VPS y configuración de dominios.",
-      ],
-    },
-    {
-      title: 'Programador Backend Java',
-      company_name: 'TASF',
-      icon: backend_apis,
-      iconBg: '#333333',
-      date: 'Junio 2022 - Septiembre 2022',
-      points: [
-        "Mantenimiento y desarrollo de módulos backend para sistemas financieros.",
-        "Optimización de consultas SQL y lógica de negocio mediante Java.",
-      ],
-    },
-    {
-      title: 'Desarrollador Web Frontend',
-      company_name: 'Nearshore Coders',
-      icon: html,
-      iconBg: '#333333',
-      date: 'Febrero 2021 - Mayo 2022',
-      points: [
-        "Creación de interfaces de usuario dinámicas y responsivas con HTML, CSS y JS.",
-        "Desarrollo de aplicaciones móviles nativas con Android Studio (Java/Kotlin) y PWAs.",
-      ],
-    },
-    {
-      title: 'Ingeniero de Soluciones TI (Preventa)',
-      company_name: 'Advanced Consulting Group (ACG)',
-      icon: network,
-      iconBg: '#333333',
-      date: 'Enero 2020 - Diciembre 2020',
-      points: [
-        "Diseño y dimensionamiento de arquitecturas de red y seguridad empresarial utilizando tecnologías de Cisco y Fortinet.",
-        "Elaboración de propuestas técnicas y análisis de viabilidad para proyectos de infraestructura crítica.",
+        "Diseño y desarrollo de aplicaciones web y móviles a la medida utilizando Angular, Laravel, Ionic y Android Studio.",
+        "Creación de APIs REST con PHP/Laravel y administración de bases de datos relacionales en MySQL.",
+        "Gestión y despliegue de proyectos en servidores locales y plataformas cloud como Azure, Vercel y Railway.",
+        "Publicación exitosa de aplicaciones móviles nativas directamente en la Google Play Store.",
       ],
     },
   ];
 
-  const projects = [
+const projects = [
     {
       id: 'project-1',
       name: 'AI Voice Concierge',
-      description: 'Agente telefónico autónomo capaz de interactuar, cualificar leads y responder dudas frecuentes en tiempo real con voz natural.',
+      description: 'Agente telefónico autónomo capaz de interactuar, cualificar leads y responder dudas frecuentes en tiempo real con voz natural, integrado con CRMs.',
       tags: [
-        { name: 'python', color: 'blue-text-gradient' },
-        { name: 'elevenlabs', color: 'green-text-gradient' },
-        { name: 'twilio', color: 'pink-text-gradient' },
+        { name: 'elevenlabs', color: 'blue-text-gradient' },
+        { name: 'twilio', color: 'green-text-gradient' },
+        { name: 'make', color: 'pink-text-gradient' },
       ],
       image: komikult, // TODO: Cambia 'komikult' por la imagen real de tu proyecto
-      repo: '#',
-      demo: '#',
+      repo: 'https://github.com/tu-usuario', // TODO: Pon tu link real o déjalo en '#'
+      demo: 'https://tu-demo.com', // TODO: Pon tu link real o déjalo en '#'
     },
     {
       id: 'project-2',
       name: 'Enterprise Automation Hub',
-      description: 'Sistema centralizado que sincroniza CRMs y ERPs, automatizando flujos de trabajo operativos y seguimiento de clientes mediante Webhooks.',
+      description: 'Sistema centralizado que sincroniza CRMs (GoHighLevel) y ERPs, automatizando flujos de trabajo operativos y seguimiento de clientes mediante Webhooks y APIs.',
       tags: [
-        { name: 'make', color: 'blue-text-gradient' },
-        { name: 'n8n', color: 'green-text-gradient' },
-        { name: 'nodejs', color: 'pink-text-gradient' },
+        { name: 'n8n', color: 'blue-text-gradient' },
+        { name: 'nodejs', color: 'green-text-gradient' },
+        { name: 'gcp', color: 'pink-text-gradient' },
       ],
       image: leaderboard, // TODO: Cambia 'leaderboard' por la imagen real de tu proyecto
-      repo: '#',
-      demo: '#',
+      repo: 'https://github.com/tu-usuario', 
+      demo: 'https://tu-demo.com',
     },
     {
       id: 'project-3',
-      name: 'SaaS Dashboard Architecture',
-      description: 'Plataforma administrativa Full Stack con consumo de APIs REST, autenticación segura y visualización de datos en tiempo real.',
+      name: 'ERP Dashboard Architecture',
+      description: 'Plataforma administrativa empresarial Full Stack con consumo de APIs REST (.NET Core), automatización de pagos y visualización de datos en tiempo real.',
       tags: [
         { name: 'react', color: 'blue-text-gradient' },
         { name: 'csharp', color: 'green-text-gradient' },
-        { name: 'sqlserver', color: 'pink-text-gradient' },
+        { name: 'mysql', color: 'pink-text-gradient' },
       ],
       image: math, // TODO: Cambia 'math' por la imagen real de tu proyecto
-      repo: '#',
-      demo: '#',
+      repo: 'https://github.com/tu-usuario',
+      demo: 'https://tu-demo.com',
     },
   ];
 
