@@ -74,6 +74,10 @@ import mysql from './tech/mysql.png';
 import gcp from './tech/googlecloud-color.png';
 
 // ... tus otros imports (ciosa, bullrocket, etc.)
+import eleven_conversaciones from './projects/ia/eleven_conversaciones.png';
+import make_getDataLeadtoEleven from './projects/ia/make_getDataLeadtoEleven.png';
+import ghl_wf_LanzarLlamadaaLead from './projects/ia/ghl_wf_LanzarLlamadaaLead.png';
+import panel_eleven from './projects/ia/panel_eleven.png'; // Asegúrate de que la ruta y el nombre del archivo sean correctos
 
 export {
   // 2. AGRÉGALOS AL EXPORT AL FINAL DEL ARCHIVO
@@ -140,8 +144,13 @@ export {
   kelhel,
   microverse,
 
-    ciosa,
-    bullrocket,
-    coding,
-    network
+  ciosa,
+  bullrocket,
+  coding,
+  network,
+
+  eleven_conversaciones,
+  make_getDataLeadtoEleven,
+  ghl_wf_LanzarLlamadaaLead,
+  panel_eleven,
 };
