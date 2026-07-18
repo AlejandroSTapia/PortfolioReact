@@ -59,7 +59,7 @@ const Hero = () => {
       </h2>
       
       {/* El texto descriptivo ahora tiene su propio párrafo y espacio (leading) */}
-      <p className="leading-relaxed text-[16px] sm:text-[18px] opacity-90">
+      <p className="leading-relaxed text-[16px] sm:text-[16px] opacity-90">
         Desarrollo y diseño de soluciones de software personalizadas.
         <br className="hidden sm:block" />
         Especialista en aplicaciones web, integraciones API y optimización de procesos.

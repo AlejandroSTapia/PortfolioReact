@@ -200,8 +200,8 @@ const experiences = [
 const projects = [
     {
       id: 'project-1',
-      name: 'AI Voice Concierge',
-      description: 'Agente telefónico autónomo capaz de interactuar, cualificar leads y responder dudas frecuentes en tiempo real con voz natural, integrado con CRMs.',
+      name: 'AGENTES IA',
+      description: 'Sistema conversacional de atención y seguimiento de leads, integrando Twilio, ElevenLabs y GoHighLevel para automatizar interacciones con clientes mediante agentes de voz y chat.',
       tags: [
         { name: 'elevenlabs', color: 'blue-text-gradient' },
         { name: 'twilio', color: 'green-text-gradient' },

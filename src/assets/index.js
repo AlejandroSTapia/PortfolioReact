@@ -50,7 +50,7 @@ import dcc from './company/dcc.png';
 import kelhel from './company/kelhel.png';
 import microverse from './company/microverse.png';
 
-import komikult from './projects/komikult.png';
+import panel_bull_contact from './projects/ia/panel_bull-contacts.png';
 import leaderboard from './projects/leaderboard.png';
 import math from './projects/math-magicians.png';
 import movie from './projects/movie-metro.png';
@@ -129,7 +129,7 @@ export {
   redux,
   tailwind,
   typescript,
-  komikult,
+  panel_bull_contact,
   leaderboard,
   math,
   movie,

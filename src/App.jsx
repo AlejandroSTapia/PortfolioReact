@@ -32,12 +32,14 @@ const App = () => {
           </div>
         </div>
 
-        <div className="bg-tech bg-cover bg-center bg-no-repeat pb-10">
-          <Tech />
-        </div>
+     
 
         <Projects />
 
+
+   <div className="bg-tech bg-cover bg-center bg-no-repeat pb-10">
+          <Tech />
+        </div>
 
 
         <div className="relative z-0">
