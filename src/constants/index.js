@@ -30,7 +30,7 @@ python,
     postgresql,
     rubyrails,
     graphql,
-    komikult,
+    panel_bull_contact,
     leaderboard,
     math,
     movie,
@@ -207,7 +207,7 @@ const projects = [
         { name: 'twilio', color: 'green-text-gradient' },
         { name: 'make', color: 'pink-text-gradient' },
       ],
-      image: komikult, // TODO: Cambia 'komikult' por la imagen real de tu proyecto
+      image: panel_bull_contact, // TODO: Cambia 'komikult' por la imagen real de tu proyecto
       repo: 'https://github.com/tu-usuario', // TODO: Pon tu link real o déjalo en '#'
       demo: 'https://tu-demo.com', // TODO: Pon tu link real o déjalo en '#'
     },
