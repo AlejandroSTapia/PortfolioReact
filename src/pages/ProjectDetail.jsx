@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { Link, Navigate, useParams } from "react-router-dom";
 
-import { projects } from '../constants';
+import { projects } from "../constants";
 
 const ProjectDetail = () => {
   const { slug } = useParams();
 
   const project = projects.find((item) => item.slug === slug);
+
+  const evidence = project?.evidence;
+  const evidenceScreenshots = evidence?.screenshots ?? [];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -51,9 +54,7 @@ const ProjectDetail = () => {
           </p>
 
           {project.note && (
-            <p className="mt-4 text-[13px] text-taupe">
-              {project.note}
-            </p>
+            <p className="mt-4 text-[13px] text-taupe">{project.note}</p>
           )}
 
           {project.technologies?.length > 0 && (
@@ -71,42 +72,50 @@ const ProjectDetail = () => {
           )}
         </header>
 
-        <img
-          src={project.image}
-          alt={`Vista principal de ${project.name}`}
-          className="mt-12 w-full h-auto max-h-[620px]
-          object-cover rounded-[24px] card-shadow"
-        />
+        {project.image && (
+          <img
+            src={project.image}
+            alt={`Vista principal de ${project.name}`}
+            className="mt-12 w-full h-auto max-h-[620px]
+    object-cover rounded-[24px] card-shadow"
+          />
+        )}
 
-        <section className="mt-20 grid md:grid-cols-2 gap-12">
-          <article>
-            <p className="uppercase tracking-[2px] text-taupe text-[12px]">
-              Contexto
-            </p>
+        {(project.challenge || project.solution) && (
+          <section className="mt-20 grid md:grid-cols-2 gap-12">
+            {project.challenge && (
+              <article>
+                <p className="uppercase tracking-[2px] text-taupe text-[12px]">
+                  Contexto
+                </p>
 
-            <h2 className="mt-2 font-beckman text-[28px] uppercase">
-              El reto
-            </h2>
+                <h2 className="mt-2 font-beckman text-[28px] uppercase">
+                  El reto
+                </h2>
 
-            <p className="mt-5 text-silver leading-[28px]">
-              {project.challenge}
-            </p>
-          </article>
+                <p className="mt-5 text-silver leading-[28px]">
+                  {project.challenge}
+                </p>
+              </article>
+            )}
 
-          <article>
-            <p className="uppercase tracking-[2px] text-taupe text-[12px]">
-              Implementación
-            </p>
+            {project.solution && (
+              <article>
+                <p className="uppercase tracking-[2px] text-taupe text-[12px]">
+                  Implementación
+                </p>
 
-            <h2 className="mt-2 font-beckman text-[28px] uppercase">
-              La solución
-            </h2>
+                <h2 className="mt-2 font-beckman text-[28px] uppercase">
+                  La solución
+                </h2>
 
-            <p className="mt-5 text-silver leading-[28px]">
-              {project.solution}
-            </p>
-          </article>
-        </section>
+                <p className="mt-5 text-silver leading-[28px]">
+                  {project.solution}
+                </p>
+              </article>
+            )}
+          </section>
+        )}
 
         {project.role && (
           <section className="mt-20">
@@ -127,62 +136,43 @@ const ProjectDetail = () => {
         {project.architecture && (
           <section className="mt-20">
             <p className="uppercase tracking-[2px] text-taupe text-[12px]">
-              Flujo técnico
+              {project.architecture.eyebrow || "Arquitectura"}
             </p>
 
             <h2 className="mt-2 font-beckman text-[28px] uppercase">
-              Arquitectura e integraciones
+              {project.architecture.title || "Arquitectura e implementación"}
             </h2>
 
-            <p className="mt-5 max-w-4xl text-silver leading-[28px]">
-              {project.architecture}
-            </p>
+            {project.architecture.description && (
+              <p className="mt-5 max-w-4xl text-silver leading-[28px]">
+                {project.architecture.description}
+              </p>
+            )}
 
-            <div
-              className="mt-8 p-6 sm:p-8 rounded-[20px]
-              bg-jetLight overflow-x-auto"
-            >
-              <pre
-                className="font-mono text-[12px]
-                sm:text-[14px] text-silver leading-[26px]"
+            {project.architecture.image && (
+              <img
+                src={project.architecture.image}
+                alt={
+                  project.architecture.imageAlt ||
+                  `Arquitectura de ${project.name}`
+                }
+                className="mt-8 w-full rounded-[20px] card-shadow"
+              />
+            )}
+
+            {project.architecture.diagram && (
+              <div
+                className="mt-8 p-6 sm:p-8 rounded-[20px]
+        bg-jetLight overflow-x-auto"
               >
-{`Lead
-  │
-  ▼
-WhatsApp
-  │
-  ▼
-GoHighLevel
-  │
-  ├── Agente de chat
-  ├── Workflows
-  └── Solicitud de llamada
-          │
-          ▼
-        Webhook
-          │
-          ▼
-         Make
-          │
-          ├── Validación
-          ├── Transformación de datos
-          ├── APIs propias
-          └── Registro de eventos
-                  │
-                  ▼
-             ElevenLabs
-                  │
-                  ├── Agente de voz
-                  ├── Base de conocimiento
-                  └── Tools / MCP
-                          │
-                          ▼
-                        Twilio
-                          │
-                          ▼
-                     Llamada al lead`}
-              </pre>
-            </div>
+                <pre
+                  className="font-mono text-[12px]
+          sm:text-[14px] text-silver leading-[26px]"
+                >
+                  {project.architecture.diagram}
+                </pre>
+              </div>
+            )}
           </section>
         )}
 
@@ -202,34 +192,36 @@ GoHighLevel
           </section>
         )}
 
-        {project.screenshots?.length > 0 && (
+        {evidenceScreenshots.length > 0 && (
           <section className="mt-20">
             <p className="uppercase tracking-[2px] text-taupe text-[12px]">
-              Demostración
+              {evidence?.eyebrow || "Demostración"}
             </p>
 
             <h2 className="mt-2 font-beckman text-[28px] uppercase">
-              Evidencia técnica
+              {evidence?.title || "Evidencia del proyecto"}
             </h2>
 
-            <p className="mt-5 max-w-3xl text-silver leading-[28px]">
-              Las capturas utilizan datos ficticios y configuraciones
-              anonimizadas para proteger la identidad del cliente y la
-              infraestructura privada.
-            </p>
+            {evidence?.description && (
+              <p className="mt-5 max-w-3xl text-silver leading-[28px]">
+                {evidence.description}
+              </p>
+            )}
 
             <div className="mt-10 grid md:grid-cols-2 gap-8">
-              {project.screenshots.map((screenshot) => (
-                <figure key={screenshot.src}>
+              {evidenceScreenshots.map((screenshot, index) => (
+                <figure key={screenshot.id || `${screenshot.src}-${index}`}>
                   <img
                     src={screenshot.src}
                     alt={screenshot.alt}
                     className="w-full rounded-[18px] card-shadow"
                   />
 
-                  <figcaption className="mt-4 text-sm text-taupe leading-[22px]">
-                    {screenshot.caption}
-                  </figcaption>
+                  {screenshot.caption && (
+                    <figcaption className="mt-4 text-sm text-taupe leading-[22px]">
+                      {screenshot.caption}
+                    </figcaption>
+                  )}
                 </figure>
               ))}
             </div>

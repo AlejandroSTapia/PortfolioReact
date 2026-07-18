@@ -244,9 +244,50 @@ const projects = [
 
     role: "Diseñé la arquitectura de integración, configuré los agentes de chat y voz, desarrollé prompts y bases de conocimiento, construí workflows, configuré tools en ElevenLabs y desarrollé APIs, webhooks y servicios MCP para conectar los agentes con sistemas externos.",
 
-    architecture:
-      "El flujo inicia cuando el agente de WhatsApp detecta una solicitud de llamada. GoHighLevel activa un workflow y envía la información a Make. El escenario valida y transforma los datos, ejecuta las integraciones necesarias y solicita a ElevenLabs el inicio de la llamada a través de Twilio. Durante la conversación, el agente puede utilizar tools y servicios externos para consultar, validar o actualizar información.",
+    architecture: {
+      eyebrow: "Flujo técnico",
 
+      title: "Arquitectura e integraciones",
+
+      description:
+        "El flujo inicia cuando el agente de WhatsApp detecta una solicitud de llamada. GoHighLevel activa un workflow y envía la información a Make. El escenario valida y transforma los datos, ejecuta las integraciones necesarias y solicita a ElevenLabs el inicio de la llamada a través de Twilio. Durante la conversación, el agente puede utilizar tools y servicios externos para consultar, validar o actualizar información.",
+
+      diagram: `Lead
+  │
+  ▼
+WhatsApp
+  │
+  ▼
+GoHighLevel
+  │
+  ├── Agente de chat
+  ├── Workflows
+  └── Solicitud de llamada
+          │
+          ▼
+        Webhook
+          │
+          ▼
+         Make
+          │
+          ├── Validación
+          ├── Transformación de datos
+          ├── APIs propias
+          └── Registro de eventos
+                  │
+                  ▼
+             ElevenLabs
+                  │
+                  ├── Agente de voz
+                  ├── Base de conocimiento
+                  └── Tools / MCP
+                          │
+                          ▼
+                        Twilio
+                          │
+                          ▼
+                     Llamada al lead`,
+    },
     result:
       "La solución centraliza la comunicación entre chat, llamadas, automatizaciones y servicios externos, reduciendo intervenciones manuales y conservando la trazabilidad de cada interacción.",
 
@@ -260,62 +301,71 @@ const projects = [
       "MCP",
     ],
 
-    screenshots: [
-      {
-        src: panel_eleven,
-        alt: "Panel de control del agente de voz en ElevenLabs",
-        caption:
-          "Información principal del agente mediante dashboards y asi poder visualizar de mejor manera el funcionamiento y flujo del agente de voz.",
-      },
-      {
-        src: eleven_conversaciones,
-        alt: "Conversación de demostración del agente de voz en ElevenLabs",
-        caption:
-          "Transcripcion y audio de la conversación de un lead que interactúa con el agente de voz.",
-      },
-      // {
-      //   src: agentesWhatsapp,
-      //   alt: 'Conversación de demostración del agente de WhatsApp',
-      //   caption:
-      //     'Conversación anonimizada donde el agente identifica la intención del lead y solicita los datos necesarios para iniciar una llamada.',
-      // },
-      {
-        src: ghl_wf_LanzarLlamadaaLead,
-        alt: "Workflow automatizado en GoHighLevel",
-        caption:
-          "Workflow encargado de detectar la solicitud de llamada y enviar la información hacia la capa de orquestación.",
-      },
-      {
-        src: make_getDataLeadtoEleven,
-        alt: "Escenario de integración desarrollado en Make",
-        caption:
-          "Escenario que recibe el webhook, valida los datos, transforma la información y ejecuta las integraciones externas, asi como guardar en el panel de cliente.",
-      },
-      // {
-      //   src: agentesElevenLabs,
-      //   alt: 'Configuración del agente de voz en ElevenLabs',
-      //   caption:
-      //     'Configuración anonimizada del agente, su prompt, variables dinámicas y base de conocimiento.',
-      // },
-      // {
-      //   src: agentesTools,
-      //   alt: 'Tools configuradas para el agente de ElevenLabs',
-      //   caption:
-      //     'Herramientas utilizadas por el agente para consultar, validar y actualizar información mediante APIs y webhooks.',
-      // },
-      // {
-      //   src: agentesApi,
-      //   alt: 'API personalizada para integración con agentes de IA',
-      //   caption:
-      //     'Endpoint propio utilizado como capa backend entre los agentes conversacionales y los servicios externos.',
-      // },
-      // {
-      //   src: agentesResultado,
-      //   alt: 'Resultado final de la automatización',
-      //   caption:
-      //     'Registro anonimizado del resultado de la llamada y de la actualización realizada por el flujo automatizado.',
-      // },
-    ],
+    evidence: {
+      eyebrow: "Demostración",
+
+      title: "Evidencia técnica",
+
+      description:
+        "Las capturas utilizan información limitada, datos de demostración y configuraciones anonimizadas para proteger la identidad del cliente y la infraestructura privada.",
+
+      screenshots: [
+        {
+          src: panel_eleven,
+          alt: "Panel de control del agente de voz en ElevenLabs",
+          caption:
+            "Información principal del agente mediante dashboards y asi poder visualizar de mejor manera el funcionamiento y flujo del agente de voz.",
+        },
+        {
+          src: eleven_conversaciones,
+          alt: "Conversación de demostración del agente de voz en ElevenLabs",
+          caption:
+            "Transcripcion y audio de la conversación de un lead que interactúa con el agente de voz.",
+        },
+        // {
+        //   src: agentesWhatsapp,
+        //   alt: 'Conversación de demostración del agente de WhatsApp',
+        //   caption:
+        //     'Conversación anonimizada donde el agente identifica la intención del lead y solicita los datos necesarios para iniciar una llamada.',
+        // },
+        {
+          src: ghl_wf_LanzarLlamadaaLead,
+          alt: "Workflow automatizado en GoHighLevel",
+          caption:
+            "Workflow encargado de detectar la solicitud de llamada y enviar la información hacia la capa de orquestación.",
+        },
+        {
+          src: make_getDataLeadtoEleven,
+          alt: "Escenario de integración desarrollado en Make",
+          caption:
+            "Escenario que recibe el webhook, valida los datos, transforma la información y ejecuta las integraciones externas, asi como guardar en el panel de cliente.",
+        },
+        // {
+        //   src: agentesElevenLabs,
+        //   alt: 'Configuración del agente de voz en ElevenLabs',
+        //   caption:
+        //     'Configuración anonimizada del agente, su prompt, variables dinámicas y base de conocimiento.',
+        // },
+        // {
+        //   src: agentesTools,
+        //   alt: 'Tools configuradas para el agente de ElevenLabs',
+        //   caption:
+        //     'Herramientas utilizadas por el agente para consultar, validar y actualizar información mediante APIs y webhooks.',
+        // },
+        // {
+        //   src: agentesApi,
+        //   alt: 'API personalizada para integración con agentes de IA',
+        //   caption:
+        //     'Endpoint propio utilizado como capa backend entre los agentes conversacionales y los servicios externos.',
+        // },
+        // {
+        //   src: agentesResultado,
+        //   alt: 'Resultado final de la automatización',
+        //   caption:
+        //     'Registro anonimizado del resultado de la llamada y de la actualización realizada por el flujo automatizado.',
+        // },
+      ],
+    },
   },
   {
     id: "project-2",
