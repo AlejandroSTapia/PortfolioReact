@@ -198,19 +198,68 @@ const experiences = [
   ];
 
 const projects = [
-    {
-      id: 'project-1',
-      name: 'AGENTES IA',
-      description: 'Sistema conversacional de atención y seguimiento de leads, integrando Twilio, ElevenLabs y GoHighLevel para automatizar interacciones con clientes mediante agentes de voz y chat.',
-      tags: [
-        { name: 'elevenlabs', color: 'blue-text-gradient' },
-        { name: 'twilio', color: 'green-text-gradient' },
-        { name: 'make', color: 'pink-text-gradient' },
-      ],
-      image: panel_bull_contact, // TODO: Cambia 'komikult' por la imagen real de tu proyecto
-      repo: 'https://github.com/tu-usuario', // TODO: Pon tu link real o déjalo en '#'
-      demo: 'https://tu-demo.com', // TODO: Pon tu link real o déjalo en '#'
-    },
+      {
+    id: 'project-1',
+
+    slug: 'agentes-ia-omnicanal',
+
+    shortName: 'AGENTES IA',
+
+    name: 'Automatización omnicanal con agentes de IA',
+
+    description:
+      'Solución privada que conecta agentes de WhatsApp y voz para atender, calificar y dar seguimiento a leads mediante workflows, telefonía e integraciones personalizadas.',
+
+    image: panel_bull_contact,
+
+    tags: [
+      {
+        name: 'GoHighLevel',
+      },
+      {
+        name: 'ElevenLabs',
+      },
+      {
+        name: 'Twilio',
+      },
+      {
+        name: 'Make',
+      },
+    ],
+
+    note: 'Caso profesional · Información anonimizada',
+
+    repo: null,
+
+    demo: null,
+
+    challenge:
+      'La operación necesitaba conectar la atención por WhatsApp con llamadas automatizadas, conservar el contexto del lead y mantener sincronizada la información entre diferentes plataformas.',
+
+    solution:
+      'Se diseñó una arquitectura donde GoHighLevel gestiona el canal de WhatsApp y los workflows iniciales, Make coordina webhooks y transformaciones, ElevenLabs ejecuta el agente de voz y Twilio proporciona la infraestructura telefónica.',
+
+    role:
+      'Diseñé la arquitectura de integración, configuré los agentes de chat y voz, desarrollé prompts y bases de conocimiento, construí workflows, configuré tools en ElevenLabs y desarrollé APIs, webhooks y servicios MCP para conectar los agentes con sistemas externos.',
+
+    architecture:
+      'El flujo inicia cuando el agente de WhatsApp detecta una solicitud de llamada. GoHighLevel activa un workflow y envía la información a Make. El escenario valida y transforma los datos, ejecuta las integraciones necesarias y solicita a ElevenLabs el inicio de la llamada a través de Twilio. Durante la conversación, el agente puede utilizar tools y servicios externos para consultar, validar o actualizar información.',
+
+    result:
+      'La solución centraliza la comunicación entre chat, llamadas, automatizaciones y servicios externos, reduciendo intervenciones manuales y conservando la trazabilidad de cada interacción.',
+
+    technologies: [
+      'GoHighLevel',
+      'ElevenLabs',
+      'Twilio',
+      'Make',
+      'REST APIs',
+      'Webhooks',
+      'MCP',
+    ],
+
+    screenshots: [],
+  },
     {
       id: 'project-2',
       name: 'Enterprise Automation Hub',
