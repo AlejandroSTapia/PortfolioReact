@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
-import { SectionWrapper } from '../hoc';
-import { styles } from '../styles';
-import { github, pineapple, pineappleHover } from '../assets';
-import { projects } from '../constants';
-import { fadeIn, textVariant, staggerContainer } from '../utils/motion';
+import { SectionWrapper } from "../hoc";
+import { styles } from "../styles";
+import { github } from "../assets";
+import { projects } from "../constants";
+import { fadeIn, textVariant, staggerContainer } from "../utils/motion";
 
 const ProjectCard = ({
   id,
@@ -24,10 +24,9 @@ const ProjectCard = ({
   handleClick,
 }) => {
   const navigate = useNavigate();
-  const [isButtonHovered, setIsButtonHovered] = useState(false);
 
   const openExternalUrl = (url) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   const handlePrimaryAction = (event) => {
@@ -45,9 +44,9 @@ const ProjectCard = ({
 
   return (
     <motion.div
-      variants={fadeIn('right', 'spring', index * 0.5, 0.75)}
+      variants={fadeIn("right", "spring", index * 0.5, 0.75)}
       className={`relative ${
-        active === id ? 'lg:flex-[3.5] flex-[10]' : 'lg:flex-[0.5] flex-[2]'
+        active === id ? "lg:flex-[3.5] flex-[10]" : "lg:flex-[0.5] flex-[2]"
       } flex items-center justify-center min-w-[170px]
       h-[420px] cursor-pointer card-shadow`}
       onClick={() => handleClick(id)}
@@ -144,27 +143,34 @@ const ProjectCard = ({
           {(slug || demo) && (
             <button
               type="button"
-              className="live-demo flex justify-between
-              sm:text-[16px] text-[14px] text-timberWolf
-              font-bold font-beckman items-center py-5
-              pl-2 pr-3 whitespace-nowrap gap-1
-              sm:w-[138px] sm:h-[50px] w-[125px]
-              h-[46px] rounded-[10px] glassmorphism
-              sm:mt-[18px] mt-[14px] hover:bg-battleGray
-              hover:text-eerieBlack transition duration-[0.2s]
-              ease-in-out"
+              className="live-demo flex justify-center
+    sm:text-[16px] text-[14px] text-timberWolf
+    font-bold font-beckman items-center
+    px-5 whitespace-nowrap gap-3
+    sm:w-[150px] sm:h-[50px]
+    w-[138px] h-[46px]
+    rounded-[10px] glassmorphism
+    sm:mt-[18px] mt-[14px]
+    hover:bg-battleGray hover:text-eerieBlack
+    transition duration-[0.2s] ease-in-out"
               onClick={handlePrimaryAction}
-              onMouseEnter={() => setIsButtonHovered(true)}
-              onMouseLeave={() => setIsButtonHovered(false)}
             >
-              <img
-                src={isButtonHovered ? pineappleHover : pineapple}
-                alt=""
-                className="sm:w-[34px] sm:h-[34px]
-                w-[30px] h-[30px] object-contain"
-              />
+              <span>{slug ? "VER CASO" : "VER DEMO"}</span>
 
-              {slug ? 'VER CASO' : 'VER DEMO'}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="w-5 h-5"
+              >
+                <path d="M7 17 17 7" />
+                <path d="M7 7h10v10" />
+              </svg>
             </button>
           )}
         </div>
@@ -174,14 +180,12 @@ const ProjectCard = ({
 };
 
 const Projects = () => {
-  const [active, setActive] = useState('project-1');
+  const [active, setActive] = useState("project-1");
 
   return (
     <div className="-mt-[6rem]">
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText}`}>
-          CASOS DE IMPLEMENTACIÓN
-        </p>
+        <p className={`${styles.sectionSubText}`}>CASOS DE IMPLEMENTACIÓN</p>
 
         <h2 className={`${styles.sectionHeadTextLight}`}>
           Proyectos destacados.
@@ -190,14 +194,14 @@ const Projects = () => {
 
       <div className="w-full flex">
         <motion.p
-          variants={fadeIn('', '', 0.1, 1)}
+          variants={fadeIn("", "", 0.1, 1)}
           className="mt-4 text-taupe text-[18px]
           max-w-3xl leading-[30px]"
         >
           Selección de soluciones en las que he diseñado agentes de IA,
-          automatizaciones, integraciones, APIs y componentes backend.
-          Cada caso presenta el problema abordado, mi participación técnica,
-          la arquitectura utilizada y el resultado obtenido.
+          automatizaciones, integraciones, APIs y componentes backend. Cada caso
+          presenta el problema abordado, mi participación técnica, la
+          arquitectura utilizada y el resultado obtenido.
         </motion.p>
       </div>
 
@@ -224,4 +228,4 @@ const Projects = () => {
   );
 };
 
-export default SectionWrapper(Projects, 'projects');
+export default SectionWrapper(Projects, "projects");

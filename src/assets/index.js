@@ -23,8 +23,7 @@ import github from './icons/github.png';
 import close from './icons/close.png';
 import download from './icons/download.png';
 import downloadHover from './icons/downloadHover.png';
-import pineapple from './icons/pineapple.png';
-import pineappleHover from './icons/pineappleHover.png';
+
 import menu from './icons/menu.png';
 import resume from './icons/resume.png';
 import send from './icons/send.png';
@@ -77,7 +76,25 @@ import gcp from './tech/googlecloud-color.png';
 import eleven_conversaciones from './projects/ia/eleven_conversaciones.png';
 import make_getDataLeadtoEleven from './projects/ia/make_getDataLeadtoEleven.png';
 import ghl_wf_LanzarLlamadaaLead from './projects/ia/ghl_wf_LanzarLlamadaaLead.png';
-import panel_eleven from './projects/ia/panel_eleven.png'; // Asegúrate de que la ruta y el nombre del archivo sean correctos
+import panel_eleven from './projects/ia/panel_eleven.png'; 
+import page_bullrocket_home from './projects/back_wp/page_bullrocket_home.png';
+import collage_back_WP from './projects/back_wp/collage_back_WP.png';
+import form_call_WG_Elias from './projects/back_wp/form_call_WG_Elias.png';
+import wordpressEditorElementor from './projects/back_wp/wordpressEditorElementor.png';
+
+import wordpressWebhookHandler
+  from './projects/back_wp/wordpress-webhook-handler.png';
+
+import wordpressIntegracionApi
+  from "./projects/back_wp/wordpress-rest-api.png";
+
+import wordpressElevenLabs
+  from "./projects/back_wp/wordpress-elevenlabs-widget.png";
+
+import wordpressInfraestructura
+  from "./projects/back_wp/wordpress-infrastructure.png";
+import wordpressAutomation
+  from "./projects/back_wp/wordpressAutomation.png";
 
 export {
   // 2. AGRÉGALOS AL EXPORT AL FINAL DEL ARCHIVO
@@ -88,7 +105,8 @@ export {
   n8n,
   elevenlabs,
   mysql,
-  gcp
+  gcp,
+  page_bullrocket_home
   // ... tus otros exports que ya estaban
 };
 
@@ -113,8 +131,6 @@ export {
   close,
   download,
   downloadHover,
-  pineapple,
-  pineappleHover,
   menu,
   resume,
   send,
@@ -153,4 +169,12 @@ export {
   make_getDataLeadtoEleven,
   ghl_wf_LanzarLlamadaaLead,
   panel_eleven,
+  collage_back_WP,
+  form_call_WG_Elias,
+  wordpressEditorElementor,
+  wordpressWebhookHandler,
+  wordpressIntegracionApi,
+  wordpressElevenLabs,
+  wordpressInfraestructura,
+  wordpressAutomation
 };
