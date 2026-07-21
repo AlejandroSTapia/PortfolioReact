@@ -647,60 +647,89 @@ Infraestructura
 },
 
 {
-  id: "axioma-ecommerce",
-  title: "AXIOMA",
-  subtitle: "Sistema administrativo de ecommerce",
-  category: "Aplicación web",
-  status: "En desarrollo",
+  id: "project-aspnet-ecommerce",
 
-  shortDescription:
-    "Sistema web administrativo desarrollado con ASP.NET Core y SQL Server para gestionar usuarios, categorías, marcas y productos de una tienda en línea.",
+  slug: "sistema-web-aspnet-ecommerce",
+
+  shortName: "ASP.NET ECOMMERCE",
+
+  name: "AXIOMA · Sistema administrativo de ecommerce",
 
   description:
-    "AXIOMA es un sistema web de ecommerce compuesto por un panel administrativo y una tienda pública. Actualmente, el panel permite administrar usuarios, categorías y marcas mediante módulos independientes, mientras que la gestión de productos, imágenes y la tienda para clientes continúan en desarrollo.",
-
-  objective:
-    "Centralizar la administración del catálogo de una tienda, mantener organizada la información de productos y preparar una plataforma escalable para la futura operación de ventas en línea.",
+    "Sistema web desarrollado con ASP.NET Core y SQL Server para administrar usuarios, categorías, marcas y el catálogo de una tienda en línea. El panel administrativo ya cuenta con módulos funcionales, mientras que Productos y la tienda pública continúan en desarrollo.",
 
   image: axiomaDashboard,
 
-  images: [
+  tags: [
     {
-      src: axiomaDashboard,
-      alt: "Dashboard administrativo del sistema AXIOMA",
-      title: "Dashboard administrativo",
-      description:
-        "Vista general con indicadores de ventas, pedidos, clientes, productos, últimos pedidos e inventario bajo."
+      name: "ASP.NET Core",
     },
     {
-      src: axiomaUsuarios,
-      alt: "Administración de usuarios en AXIOMA",
-      title: "Gestión de usuarios",
-      description:
-        "Listado de usuarios con búsqueda, paginación, estado y acciones de edición y eliminación."
+      name: "C#",
     },
     {
-      src: axiomaCategorias,
-      alt: "Administración de categorías en AXIOMA",
-      title: "Gestión de categorías",
-      description:
-        "Módulo para consultar, registrar, editar y eliminar las categorías del catálogo."
+      name: "SQL Server",
     },
     {
-      src: axiomaMarcas,
-      alt: "Administración de marcas en AXIOMA",
-      title: "Gestión de marcas",
-      description:
-        "Administración de marcas con indicadores de estado, búsqueda y paginación."
+      name: "Cloudinary",
     },
-    {
-      src: axiomaProductos,
-      alt: "Módulo de productos de AXIOMA en desarrollo",
-      title: "Gestión de productos",
-      description:
-        "Sección actualmente en desarrollo para registrar productos, asociar categorías y marcas, controlar inventario y administrar imágenes."
-    }
   ],
+
+  note:
+    "Proyecto personal en desarrollo · Panel administrativo funcional · Productos y tienda pública en construcción",
+
+  repo: null,
+
+  demo: null,
+
+  challenge:
+    "El proyecto requería separar la administración interna de la experiencia pública de compra, mantener organizada la lógica de negocio y preparar el sistema para gestionar productos, imágenes, inventario y futuras operaciones de ecommerce sin concentrar toda la responsabilidad en una sola capa.",
+
+  solution:
+    "Se construyó una solución ASP.NET Core con arquitectura por capas y dos proyectos de presentación: uno para el panel administrativo y otro para la tienda pública. Los módulos de usuarios, categorías y marcas ya operan sobre SQL Server; el módulo de productos se está adaptando para incorporar almacenamiento externo de imágenes con Cloudinary, validaciones, seguridad, caché y una entrega optimizada para la tienda.",
+
+  role:
+    "Diseñé la estructura de la solución, configuré la conexión con SQL Server, desarrollé los módulos administrativos, repositorios, servicios y controladores, adapté la interfaz del panel y actualmente trabajo en el CRUD de productos, la integración segura de imágenes, el control de inventario y la futura capa pública de ecommerce.",
+
+  architecture: {
+    eyebrow: "Arquitectura de software",
+
+    title: "Aplicación ASP.NET Core por capas",
+
+    description:
+      "La solución separa la presentación, las reglas de negocio, el acceso a datos y las entidades. El panel administrativo y la tienda pública consumen la misma lógica central, mientras SQL Server conserva la información transaccional y Cloudinary se prepara para almacenar y entregar las imágenes del catálogo mediante CDN.",
+
+    diagram: `Administrador / Cliente
+          │
+          ▼
+Capa de presentación
+  │
+  ├── Panel administrativo ASP.NET Core MVC
+  └── Tienda pública ASP.NET Core MVC
+          │
+          ▼
+Capa de negocio
+  │
+  ├── Validaciones
+  ├── Reglas del catálogo
+  ├── Gestión de inventario
+  └── Coordinación de servicios
+          │
+          ├──────────────► Cloudinary
+          │                Imágenes + CDN
+          ▼
+Capa de acceso a datos
+  │
+  ├── Entity Framework Core
+  ├── Repositorios
+  └── Procedimientos almacenados
+          │
+          ▼
+      SQL Server`,
+  },
+
+  result:
+    "Actualmente están implementados el dashboard administrativo y los módulos de usuarios, categorías y marcas, incluyendo búsqueda, paginación, estados y operaciones de mantenimiento. El módulo de productos, la integración definitiva de imágenes, el inventario y la tienda pública continúan en desarrollo.",
 
   technologies: [
     "ASP.NET Core",
@@ -711,78 +740,65 @@ Infraestructura
     "JavaScript",
     "jQuery",
     "Bootstrap",
-    "Cloudinary"
+    "Cloudinary",
   ],
 
-  architecture: [
-    "Arquitectura por capas",
-    "Capa de presentación administrativa",
-    "Capa de presentación para la tienda",
-    "Capa de negocio",
-    "Capa de acceso a datos",
-    "Capa de entidades",
-    "Inyección de dependencias",
-    "Procedimientos almacenados"
-  ],
+  evidence: {
+    eyebrow: "Avance del proyecto",
 
-  features: [
-    "Dashboard administrativo",
-    "Administración de usuarios",
-    "Administración de categorías",
-    "Administración de marcas",
-    "Búsqueda y paginación de registros",
-    "Activación y desactivación de registros",
-    "Separación por capas",
-    "Persistencia de información en SQL Server"
-  ],
+    title: "Módulos administrativos implementados",
 
-  inProgress: [
-    "CRUD completo de productos",
-    "Carga y optimización de imágenes con Cloudinary",
-    "Control de stock e inventario",
-    "Catálogo público de productos",
-    "Carrito de compras",
-    "Proceso de compra",
-    "Autenticación y autorización por roles",
-    "Caché y optimización de rendimiento",
-    "SEO para las páginas públicas"
-  ],
+    description:
+      "Las capturas muestran el estado actual del panel administrativo. Productos aparece como módulo en desarrollo y la tienda pública todavía no se presenta como una funcionalidad terminada.",
 
-  responsibilities: [
-    "Diseño de la arquitectura por capas",
-    "Modelado y conexión con SQL Server",
-    "Desarrollo de módulos administrativos",
-    "Creación de repositorios y servicios de negocio",
-    "Diseño y adaptación de la interfaz administrativa",
-    "Implementación progresiva del módulo de productos",
-    "Preparación de almacenamiento externo para imágenes"
-  ],
+    screenshots: [
+      {
+        src: axiomaDashboard,
 
-  challenges: [
-    {
-      title: "Separación de responsabilidades",
-      description:
-        "Organizar el sistema en distintas capas para evitar que los controladores accedan directamente a la base de datos."
-    },
-    {
-      title: "Gestión de imágenes",
-      description:
-        "Preparar una integración con Cloudinary para almacenar y entregar imágenes sin sobrecargar el servidor ni SQL Server."
-    },
-    {
-      title: "Escalabilidad",
-      description:
-        "Diseñar una base que permita incorporar posteriormente la tienda pública, el carrito, pedidos y seguridad por roles."
-    }
-  ],
+        alt:
+          "Dashboard administrativo del sistema AXIOMA",
 
-  currentState:
-    "El panel administrativo cuenta con módulos funcionales de usuarios, categorías y marcas. El módulo de productos, la integración definitiva de imágenes y la tienda pública continúan en desarrollo.",
+        caption:
+          "Dashboard administrativo con indicadores de ventas, pedidos, clientes, productos, últimos pedidos e inventario bajo. Los valores visibles son datos de demostración para la interfaz.",
+      },
+      {
+        src: axiomaUsuarios,
 
-  repositoryUrl: "",
-  liveUrl: "",
+        alt:
+          "Módulo de administración de usuarios en AXIOMA",
 
-  featured: true
+        caption:
+          "Gestión de usuarios con búsqueda, paginación, estado y acciones para editar o eliminar registros.",
+      },
+      {
+        src: axiomaCategorias,
+
+        alt:
+          "Módulo de administración de categorías en AXIOMA",
+
+        caption:
+          "Mantenimiento de categorías con alta, consulta, edición, eliminación, búsqueda y paginación.",
+      },
+      {
+        src: axiomaMarcas,
+
+        alt:
+          "Módulo de administración de marcas en AXIOMA",
+
+        caption:
+          "Mantenimiento de marcas con estados activos e inactivos, búsqueda, paginación y acciones administrativas.",
+      },
+      {
+        src: axiomaProductos,
+
+        alt:
+          "Pantalla del módulo de productos de AXIOMA en desarrollo",
+
+        caption:
+          "Estado actual de la sección Productos. El CRUD, las imágenes, el inventario y la conexión con la tienda pública continúan en implementación.",
+      },
+    ],
+  },
 },
 ];
 export { services, technologies, experiences, projects };
