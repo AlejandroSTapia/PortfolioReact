@@ -54,6 +54,12 @@ import {
 wordpressIntegracionApi,
 wordpressElevenLabs,
 wordpressInfraestructura,
+
+axiomaDashboard,
+  axiomaUsuarios,
+  axiomaCategorias,
+  axiomaMarcas,
+  axiomaProductos,
 } from "../assets";
 
 export const navLinks = [
@@ -640,95 +646,143 @@ Infraestructura
   },
 },
 
-  {
-    id: "project-dotnet",
+{
+  id: "axioma-ecommerce",
+  title: "AXIOMA",
+  subtitle: "Sistema administrativo de ecommerce",
+  category: "Aplicación web",
+  status: "En desarrollo",
 
-    slug: "ecommerce-aspnet-core",
+  shortDescription:
+    "Sistema web administrativo desarrollado con ASP.NET Core y SQL Server para gestionar usuarios, categorías, marcas y productos de una tienda en línea.",
 
-    shortName: "E-COMMERCE .NET",
+  description:
+    "AXIOMA es un sistema web de ecommerce compuesto por un panel administrativo y una tienda pública. Actualmente, el panel permite administrar usuarios, categorías y marcas mediante módulos independientes, mientras que la gestión de productos, imágenes y la tienda para clientes continúan en desarrollo.",
 
-    name: "E-commerce con ASP.NET Core",
+  objective:
+    "Centralizar la administración del catálogo de una tienda, mantener organizada la información de productos y preparar una plataforma escalable para la futura operación de ventas en línea.",
 
-    description:
-      "Aplicación web de comercio electrónico desarrollada para demostrar arquitectura backend, persistencia de datos, lógica de negocio y construcción de interfaces con tecnologías .NET.",
-    image: coding,
+  image: axiomaDashboard,
 
-    tags: [
-      {
-        name: "ASP.NET Core",
-      },
-      {
-        name: "C#",
-      },
-      {
-        name: "Entity Framework",
-      },
-      {
-        name: "SQL Server",
-      },
-    ],
-
-    note: "Proyecto de desarrollo de software",
-
-    repo: null,
-
-    demo: null,
-
-    challenge:
-      "Construir una aplicación que organizara el catálogo, la administración de productos, la persistencia de información y la lógica principal de una tienda en línea.",
-
-    solution:
-      "Se desarrolló una aplicación con ASP.NET Core, una estructura organizada por responsabilidades, acceso a datos mediante Entity Framework Core y persistencia en SQL Server.",
-
-    role:
-      "Diseño de la arquitectura, desarrollo backend, modelado de datos, validaciones, acceso a base de datos y construcción de las principales funcionalidades de la aplicación.",
-
-    architecture: {
-      eyebrow: "Arquitectura de software",
-
-      title: "Backend y persistencia",
-
+  images: [
+    {
+      src: axiomaDashboard,
+      alt: "Dashboard administrativo del sistema AXIOMA",
+      title: "Dashboard administrativo",
       description:
-        "La solución está organizada en capas de presentación, lógica de negocio, acceso a datos e infraestructura.",
-
-      diagram: `Interfaz web
-  │
-  ▼
-ASP.NET Core
-  │
-  ├── Controllers
-  ├── Services
-  ├── Repositories
-  └── Entity Framework Core
-          │
-          ▼
-      SQL Server`,
+        "Vista general con indicadores de ventas, pedidos, clientes, productos, últimos pedidos e inventario bajo."
     },
-
-    result:
-      "El proyecto integra las principales responsabilidades de una aplicación web empresarial y demuestra conocimientos de backend, bases de datos y arquitectura con el ecosistema .NET.",
-
-    technologies: [
-      "ASP.NET Core",
-      "C#",
-      "Entity Framework Core",
-      "SQL Server",
-      "REST API",
-      "HTML",
-      "CSS",
-      "JavaScript",
-    ],
-
-    evidence: {
-      eyebrow: "Aplicación",
-
-      title: "Funcionalidades principales",
-
+    {
+      src: axiomaUsuarios,
+      alt: "Administración de usuarios en AXIOMA",
+      title: "Gestión de usuarios",
       description:
-        "Las capturas mostrarán el catálogo, las vistas de productos, la administración y la estructura técnica de la aplicación.",
-
-      screenshots: [],
+        "Listado de usuarios con búsqueda, paginación, estado y acciones de edición y eliminación."
     },
-  },
+    {
+      src: axiomaCategorias,
+      alt: "Administración de categorías en AXIOMA",
+      title: "Gestión de categorías",
+      description:
+        "Módulo para consultar, registrar, editar y eliminar las categorías del catálogo."
+    },
+    {
+      src: axiomaMarcas,
+      alt: "Administración de marcas en AXIOMA",
+      title: "Gestión de marcas",
+      description:
+        "Administración de marcas con indicadores de estado, búsqueda y paginación."
+    },
+    {
+      src: axiomaProductos,
+      alt: "Módulo de productos de AXIOMA en desarrollo",
+      title: "Gestión de productos",
+      description:
+        "Sección actualmente en desarrollo para registrar productos, asociar categorías y marcas, controlar inventario y administrar imágenes."
+    }
+  ],
+
+  technologies: [
+    "ASP.NET Core",
+    "C#",
+    "MVC",
+    "Entity Framework Core",
+    "SQL Server",
+    "JavaScript",
+    "jQuery",
+    "Bootstrap",
+    "Cloudinary"
+  ],
+
+  architecture: [
+    "Arquitectura por capas",
+    "Capa de presentación administrativa",
+    "Capa de presentación para la tienda",
+    "Capa de negocio",
+    "Capa de acceso a datos",
+    "Capa de entidades",
+    "Inyección de dependencias",
+    "Procedimientos almacenados"
+  ],
+
+  features: [
+    "Dashboard administrativo",
+    "Administración de usuarios",
+    "Administración de categorías",
+    "Administración de marcas",
+    "Búsqueda y paginación de registros",
+    "Activación y desactivación de registros",
+    "Separación por capas",
+    "Persistencia de información en SQL Server"
+  ],
+
+  inProgress: [
+    "CRUD completo de productos",
+    "Carga y optimización de imágenes con Cloudinary",
+    "Control de stock e inventario",
+    "Catálogo público de productos",
+    "Carrito de compras",
+    "Proceso de compra",
+    "Autenticación y autorización por roles",
+    "Caché y optimización de rendimiento",
+    "SEO para las páginas públicas"
+  ],
+
+  responsibilities: [
+    "Diseño de la arquitectura por capas",
+    "Modelado y conexión con SQL Server",
+    "Desarrollo de módulos administrativos",
+    "Creación de repositorios y servicios de negocio",
+    "Diseño y adaptación de la interfaz administrativa",
+    "Implementación progresiva del módulo de productos",
+    "Preparación de almacenamiento externo para imágenes"
+  ],
+
+  challenges: [
+    {
+      title: "Separación de responsabilidades",
+      description:
+        "Organizar el sistema en distintas capas para evitar que los controladores accedan directamente a la base de datos."
+    },
+    {
+      title: "Gestión de imágenes",
+      description:
+        "Preparar una integración con Cloudinary para almacenar y entregar imágenes sin sobrecargar el servidor ni SQL Server."
+    },
+    {
+      title: "Escalabilidad",
+      description:
+        "Diseñar una base que permita incorporar posteriormente la tienda pública, el carrito, pedidos y seguridad por roles."
+    }
+  ],
+
+  currentState:
+    "El panel administrativo cuenta con módulos funcionales de usuarios, categorías y marcas. El módulo de productos, la integración definitiva de imágenes y la tienda pública continúan en desarrollo.",
+
+  repositoryUrl: "",
+  liveUrl: "",
+
+  featured: true
+},
 ];
 export { services, technologies, experiences, projects };

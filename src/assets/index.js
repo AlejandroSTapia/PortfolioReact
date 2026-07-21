@@ -96,6 +96,12 @@ import wordpressInfraestructura
 import wordpressAutomation
   from "./projects/back_wp/wordpressAutomation.png";
 
+import axiomaDashboard from "./projects/back_asp/axioma-dashboard.png";
+import axiomaUsuarios from "./projects/back_asp/axioma-usuarios.png";
+import axiomaCategorias from "./projects/back_asp/axioma-categorias.png";
+import axiomaMarcas from "./projects/back_asp/axioma-marcas.png";
+import axiomaProductos from "./projects/back_asp/axioma-productos-desarrollo.png";
+
 export {
   // 2. AGRÉGALOS AL EXPORT AL FINAL DEL ARCHIVO
   ghl,
@@ -176,5 +182,10 @@ export {
   wordpressIntegracionApi,
   wordpressElevenLabs,
   wordpressInfraestructura,
-  wordpressAutomation
+  wordpressAutomation,
+  axiomaDashboard,
+  axiomaUsuarios,
+  axiomaCategorias,
+  axiomaMarcas,
+  axiomaProductos
 };
