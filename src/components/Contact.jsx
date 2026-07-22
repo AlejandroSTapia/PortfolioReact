@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 
@@ -7,20 +7,28 @@ import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 import { send, sendHover } from '../assets';
 
-const INITIAL_FORM = {
+const EMAILJS_SERVICE_ID =
+  import.meta.env.VITE_EMAILJS_SERVICE_ID;
+
+const EMAILJS_TEMPLATE_ID =
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+
+const EMAILJS_PUBLIC_KEY =
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+const initialForm = {
   name: '',
   email: '',
   message: '',
 };
 
 const Contact = () => {
-  const [form, setForm] = useState(INITIAL_FORM);
+  const formRef = useRef(null);
+
+  const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);
-  const [buttonImage, setButtonImage] = useState(send);
-  const [feedback, setFeedback] = useState({
-    type: '',
-    message: '',
-  });
+  const [buttonHover, setButtonHover] = useState(false);
+  const [status, setStatus] = useState(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -30,12 +38,36 @@ const Contact = () => {
       [name]: value,
     }));
 
-    if (feedback.message) {
-      setFeedback({
-        type: '',
-        message: '',
-      });
+    if (status) {
+      setStatus(null);
     }
+  };
+
+  const validateForm = () => {
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const message = form.message.trim();
+
+    if (!name || !email || !message) {
+      return 'Completa todos los campos.';
+    }
+
+    const validEmail =
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!validEmail) {
+      return 'Ingresa un correo electrónico válido.';
+    }
+
+    if (name.length < 2) {
+      return 'El nombre debe tener al menos 2 caracteres.';
+    }
+
+    if (message.length < 10) {
+      return 'El mensaje debe tener al menos 10 caracteres.';
+    }
+
+    return null;
   };
 
   const handleSubmit = async (event) => {
@@ -45,69 +77,71 @@ const Contact = () => {
       return;
     }
 
-    const name = form.name.trim();
-    const email = form.email.trim();
-    const message = form.message.trim();
+    const validationError = validateForm();
 
-    if (!name || !email || !message) {
-      setFeedback({
+    if (validationError) {
+      setStatus({
         type: 'error',
-        message: 'Completa todos los campos antes de enviar.',
+        message: validationError,
       });
 
       return;
     }
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
+    if (
+      !EMAILJS_SERVICE_ID ||
+      !EMAILJS_TEMPLATE_ID ||
+      !EMAILJS_PUBLIC_KEY
+    ) {
       console.error(
-        'Faltan las variables de entorno necesarias para EmailJS.'
+        'Faltan las variables de configuración de EmailJS.'
       );
 
-      setFeedback({
+      setStatus({
         type: 'error',
         message:
-          'El formulario no está configurado correctamente. Inténtalo más tarde.',
+          'El formulario todavía no está configurado correctamente.',
       });
 
       return;
     }
 
     setLoading(true);
-    setFeedback({
-      type: '',
-      message: '',
-    });
+    setStatus(null);
 
     try {
       await emailjs.send(
-        serviceId,
-        templateId,
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         {
-          from_name: name,
-          from_email: email,
-          reply_to: email,
-          message,
+          from_name: form.name.trim(),
+          from_email: form.email.trim(),
+          reply_to: form.email.trim(),
+          message: form.message.trim(),
+          page_url: window.location.href,
         },
         {
-          publicKey,
+          publicKey: EMAILJS_PUBLIC_KEY,
+
+          // Evita varios envíos inmediatos desde la misma página.
+          limitRate: {
+            id: 'portfolio-contact-form',
+            throttle: 10000,
+          },
         }
       );
 
-      setForm(INITIAL_FORM);
-
-      setFeedback({
+      setStatus({
         type: 'success',
         message:
-          'Mensaje enviado correctamente. Te responderé lo más pronto posible.',
+          'Gracias. Tu mensaje fue enviado correctamente.',
       });
-    } catch (error) {
-      console.error('Error al enviar el formulario:', error);
 
-      setFeedback({
+      setForm(initialForm);
+    } catch (error) {
+      console.error('Error al enviar con EmailJS:', error);
+
+      setStatus({
         type: 'error',
         message:
           'No fue posible enviar el mensaje. Inténtalo nuevamente.',
@@ -126,15 +160,19 @@ const Contact = () => {
         variants={slideIn('left', 'tween', 0.2, 1)}
         className="flex-[0.75] bg-jet p-8 rounded-2xl"
       >
-        <p className={styles.sectionSubText}>Hablemos</p>
+        <p className={styles.sectionSubText}>
+          Hablemos
+        </p>
 
         <h3 className={styles.sectionHeadTextLight}>
           Contacto.
         </h3>
 
         <form
+          ref={formRef}
           onSubmit={handleSubmit}
           className="mt-10 flex flex-col gap-6 font-poppins"
+          noValidate
         >
           <label className="flex flex-col">
             <span className="text-timberWolf font-medium mb-4">
@@ -148,12 +186,15 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="¿Cuál es tu nombre?"
               autoComplete="name"
+              minLength={2}
               maxLength={100}
               required
+              disabled={loading}
               className="bg-eerieBlack py-4 px-6
               placeholder:text-taupe
               text-timberWolf rounded-lg outline-none
-              border-none font-medium"
+              border-none font-medium
+              disabled:opacity-60"
             />
           </label>
 
@@ -169,12 +210,14 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="¿Cuál es tu correo electrónico?"
               autoComplete="email"
-              maxLength={150}
+              maxLength={200}
               required
+              disabled={loading}
               className="bg-eerieBlack py-4 px-6
               placeholder:text-taupe
               text-timberWolf rounded-lg outline-none
-              border-none font-medium"
+              border-none font-medium
+              disabled:opacity-60"
             />
           </label>
 
@@ -192,45 +235,47 @@ const Contact = () => {
               minLength={10}
               maxLength={2000}
               required
+              disabled={loading}
               className="bg-eerieBlack py-4 px-6
               placeholder:text-taupe
               text-timberWolf rounded-lg outline-none
-              border-none font-medium resize-none"
+              border-none font-medium resize-none
+              disabled:opacity-60"
             />
           </label>
 
-          {feedback.message && (
-            <p
+          {status && (
+            <div
               role="status"
+              aria-live="polite"
               className={
-                feedback.type === 'success'
-                  ? 'text-green-400 font-medium'
-                  : 'text-red-400 font-medium'
+                status.type === 'success'
+                  ? 'rounded-lg border border-green-500/40 bg-green-500/10 px-4 py-3 text-green-300'
+                  : 'rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-red-300'
               }
             >
-              {feedback.message}
-            </p>
+              {status.message}
+            </div>
           )}
 
           <button
             type="submit"
             disabled={loading}
-            aria-busy={loading}
-            className={`live-demo flex justify-center sm:gap-4
+            className="live-demo flex justify-center sm:gap-4
             gap-3 sm:text-[20px] text-[16px] text-timberWolf
             font-bold font-beckman items-center py-5
             whitespace-nowrap sm:w-[160px] sm:h-[50px]
             w-[140px] h-[45px] rounded-[10px] bg-night
             hover:bg-battleGray hover:text-eerieBlack
-            transition duration-[0.2s] ease-in-out
-            ${loading ? 'opacity-60 cursor-not-allowed' : ''}`}
-            onMouseEnter={() => setButtonImage(sendHover)}
-            onMouseLeave={() => setButtonImage(send)}
+            disabled:cursor-not-allowed disabled:opacity-60
+            transition duration-[0.2s] ease-in-out"
+            onMouseEnter={() => setButtonHover(true)}
+            onMouseLeave={() => setButtonHover(false)}
           >
             {loading ? 'Enviando...' : 'Enviar'}
 
             <img
-              src={buttonImage}
+              src={buttonHover ? sendHover : send}
               alt=""
               aria-hidden="true"
               className="contact-btn sm:w-[26px] sm:h-[26px]
