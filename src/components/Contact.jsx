@@ -140,26 +140,21 @@ const Contact = () => {
       setForm(initialForm);
 } catch (error) {
   const errorStatus =
-    error?.status ?? 'Sin código de estado';
+    error?.status ?? 'Sin estado';
 
   const errorText =
     error?.text ??
     error?.message ??
-    'EmailJS no devolvió detalles';
+    'EmailJS no devolvió una descripción';
 
-  console.error('Error al enviar con EmailJS:', {
-    status: errorStatus,
-    text: errorText,
-    error,
-  });
+  console.error('Error al enviar con EmailJS');
+  console.error('Status:', errorStatus);
+  console.error('Detalle:', errorText);
 
   setStatus({
     type: 'error',
-    message:
-      'No fue posible enviar el mensaje. Inténtalo nuevamente.',
+    message: `Error de EmailJS: ${errorText}`,
   });
-} finally {
-  setLoading(false);
 }
   };
 
