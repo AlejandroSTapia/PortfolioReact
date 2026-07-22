@@ -1,25 +1,22 @@
-import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
-import { styles } from '../styles';
-import { SectionWrapper } from '../hoc';
-import { slideIn } from '../utils/motion';
-import { send, sendHover } from '../assets';
+import { styles } from "../styles";
+import { SectionWrapper } from "../hoc";
+import { slideIn } from "../utils/motion";
+import { send, sendHover } from "../assets";
 
-const EMAILJS_SERVICE_ID =
-  import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID?.trim();
 
-const EMAILJS_TEMPLATE_ID =
-  import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID?.trim();
 
-const EMAILJS_PUBLIC_KEY =
-  import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY?.trim();
 
 const initialForm = {
-  name: '',
-  email: '',
-  message: '',
+  name: "",
+  email: "",
+  message: "",
 };
 
 const Contact = () => {
@@ -49,22 +46,21 @@ const Contact = () => {
     const message = form.message.trim();
 
     if (!name || !email || !message) {
-      return 'Completa todos los campos.';
+      return "Completa todos los campos.";
     }
 
-    const validEmail =
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     if (!validEmail) {
-      return 'Ingresa un correo electrónico válido.';
+      return "Ingresa un correo electrónico válido.";
     }
 
     if (name.length < 2) {
-      return 'El nombre debe tener al menos 2 caracteres.';
+      return "El nombre debe tener al menos 2 caracteres.";
     }
 
     if (message.length < 10) {
-      return 'El mensaje debe tener al menos 10 caracteres.';
+      return "El mensaje debe tener al menos 10 caracteres.";
     }
 
     return null;
@@ -81,26 +77,19 @@ const Contact = () => {
 
     if (validationError) {
       setStatus({
-        type: 'error',
+        type: "error",
         message: validationError,
       });
 
       return;
     }
 
-    if (
-      !EMAILJS_SERVICE_ID ||
-      !EMAILJS_TEMPLATE_ID ||
-      !EMAILJS_PUBLIC_KEY
-    ) {
-      console.error(
-        'Faltan las variables de configuración de EmailJS.'
-      );
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.error("Faltan las variables de configuración de EmailJS.");
 
       setStatus({
-        type: 'error',
-        message:
-          'El formulario todavía no está configurado correctamente.',
+        type: "error",
+        message: "El formulario todavía no está configurado correctamente.",
       });
 
       return;
@@ -120,42 +109,33 @@ const Contact = () => {
           message: form.message.trim(),
           page_url: window.location.href,
         },
-        {
-          publicKey: EMAILJS_PUBLIC_KEY,
-
-          // Evita varios envíos inmediatos desde la misma página.
-          limitRate: {
-            id: 'portfolio-contact-form',
-            throttle: 10000,
-          },
-        }
+        EMAILJS_PUBLIC_KEY,
       );
 
       setStatus({
-        type: 'success',
-        message:
-          'Gracias. Tu mensaje fue enviado correctamente.',
+        type: "success",
+        message: "Gracias. Tu mensaje fue enviado correctamente.",
       });
 
       setForm(initialForm);
-} catch (error) {
-  const errorStatus =
-    error?.status ?? 'Sin estado';
+    } catch (error) {
+      const errorStatus = error?.status ?? "Sin estado";
 
-  const errorText =
-    error?.text ??
-    error?.message ??
-    'EmailJS no devolvió una descripción';
+      const errorText =
+        error?.text ?? error?.message ?? "EmailJS no devolvió una descripción";
 
-  console.error('Error al enviar con EmailJS');
-  console.error('Status:', errorStatus);
-  console.error('Detalle:', errorText);
+      console.error("Error al enviar con EmailJS:", {
+        status: errorStatus,
+        detail: errorText,
+      });
 
-  setStatus({
-    type: 'error',
-    message: `Error de EmailJS: ${errorText}`,
-  });
-}
+      setStatus({
+        type: "error",
+        message: "No fue posible enviar el mensaje. Inténtalo nuevamente.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -164,16 +144,12 @@ const Contact = () => {
       flex gap-10 overflow-hidden"
     >
       <motion.div
-        variants={slideIn('left', 'tween', 0.2, 1)}
+        variants={slideIn("left", "tween", 0.2, 1)}
         className="flex-[0.75] bg-jet p-8 rounded-2xl"
       >
-        <p className={styles.sectionSubText}>
-          Hablemos
-        </p>
+        <p className={styles.sectionSubText}>Hablemos</p>
 
-        <h3 className={styles.sectionHeadTextLight}>
-          Contacto.
-        </h3>
+        <h3 className={styles.sectionHeadTextLight}>Contacto.</h3>
 
         <form
           ref={formRef}
@@ -182,9 +158,7 @@ const Contact = () => {
           noValidate
         >
           <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">
-              Tu Nombre
-            </span>
+            <span className="text-timberWolf font-medium mb-4">Tu Nombre</span>
 
             <input
               type="text"
@@ -206,9 +180,7 @@ const Contact = () => {
           </label>
 
           <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">
-              Tu Correo
-            </span>
+            <span className="text-timberWolf font-medium mb-4">Tu Correo</span>
 
             <input
               type="email"
@@ -229,9 +201,7 @@ const Contact = () => {
           </label>
 
           <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">
-              Tu Mensaje
-            </span>
+            <span className="text-timberWolf font-medium mb-4">Tu Mensaje</span>
 
             <textarea
               rows={7}
@@ -256,9 +226,9 @@ const Contact = () => {
               role="status"
               aria-live="polite"
               className={
-                status.type === 'success'
-                  ? 'rounded-lg border border-green-500/40 bg-green-500/10 px-4 py-3 text-green-300'
-                  : 'rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-red-300'
+                status.type === "success"
+                  ? "rounded-lg border border-green-500/40 bg-green-500/10 px-4 py-3 text-green-300"
+                  : "rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-red-300"
               }
             >
               {status.message}
@@ -279,7 +249,7 @@ const Contact = () => {
             onMouseEnter={() => setButtonHover(true)}
             onMouseLeave={() => setButtonHover(false)}
           >
-            {loading ? 'Enviando...' : 'Enviar'}
+            {loading ? "Enviando..." : "Enviar"}
 
             <img
               src={buttonHover ? sendHover : send}
@@ -295,4 +265,4 @@ const Contact = () => {
   );
 };
 
-export default SectionWrapper(Contact, 'contact');
+export default SectionWrapper(Contact, "contact");
