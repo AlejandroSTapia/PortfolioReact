@@ -138,17 +138,29 @@ const Contact = () => {
       });
 
       setForm(initialForm);
-    } catch (error) {
-      console.error('Error al enviar con EmailJS:', error);
+} catch (error) {
+  const errorStatus =
+    error?.status ?? 'Sin código de estado';
 
-      setStatus({
-        type: 'error',
-        message:
-          'No fue posible enviar el mensaje. Inténtalo nuevamente.',
-      });
-    } finally {
-      setLoading(false);
-    }
+  const errorText =
+    error?.text ??
+    error?.message ??
+    'EmailJS no devolvió detalles';
+
+  console.error('Error al enviar con EmailJS:', {
+    status: errorStatus,
+    text: errorText,
+    error,
+  });
+
+  setStatus({
+    type: 'error',
+    message:
+      'No fue posible enviar el mensaje. Inténtalo nuevamente.',
+  });
+} finally {
+  setLoading(false);
+}
   };
 
   return (
